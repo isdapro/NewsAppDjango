@@ -1,0 +1,90 @@
+
+{% load staticfiles %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  </head>
+<body>
+
+
+
+
+
+
+<div class="container">
+<div class="valign-wrapper">
+  <br>
+
+  <div class="row center" style="width:100%">
+    <p>{{ form.non_field_errors }}</p>
+    <br>
+  <form class="col s12" action = "{% url 'login' %}", method = "post">
+    {% csrf_token %}
+    <div class="row">
+      <div class="input-field offset-s3 col s6">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="{{form.username.id_for_label}}" type="text" class="validate" name = {{form.username.html_name}}>
+        <label class="active" for="{{form.username.id_for_label}}">Username</label>
+      </div>
+      <br>      
+      <p style="font-size:12px">
+      {% if form.username.errors%}
+      {% for error in form.username.errors%}
+      {{error|escape}}
+      {%endfor%}
+      {%endif%}
+      </p>
+    </div>
+    <div class="row">
+      <div class="input-field offset-s3 col s6">
+        <i class="material-icons prefix">lock</i>
+        <input id="{{form.password.id_for_label}}" type="password" class="validate" name = {{form.password.html_name}}>
+        <label class="active" for="{{form.password.id_for_label}}">Password</label>
+      </div>
+      <br>
+      <p style="font-size:12px">
+      {% if form.username.errors%}
+      {% for error in form.username.errors%}
+      {{error|escape}}
+      {%endfor%}
+      {%endif%}
+      </p>
+    </div>
+    <div class="center-align">
+    <button class="waves-effect waves-light btn-large" type="submit" name="action"><i class="material-icons left">lock_open</i> Login
+
+    </button>
+    </div>
+    </form>
+    <p><a href="{% url 'signup' %}"> New User? </a></p>
+    <br>
+    <p>Made with ❤ by Ishan</p>
+    <p>Powered by News API and PredictHQ</p>
+
+    </div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

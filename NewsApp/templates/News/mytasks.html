@@ -1,0 +1,33 @@
+
+{% extends 'home.html' %}
+{% load staticfiles %}
+{% load static %}
+{% block title %}
+  <title>My Tasks</title>
+{% endblock title %}
+
+{% block content %}
+
+<div class="parallax-container">
+  <div class="parallax"><img src="{% static 'images/mytask.jpg' %}"></div>
+</div>
+<br>
+<div class="container">
+{% for task in user.tasks_set.all %}
+<ul class="collection">
+  <li class="collection-item avatar">
+    <span class="title" style="font-size:20px">{{task.task_title}}</span>
+    <p><br>{{task.task_desc}}</p>
+
+    <form class = "secondary-content" action="{% url 'removetask' %}" method="post">
+      {%csrf_token%}
+      <input type = "hidden" name = "primary" value = "{{task.pk}}" />
+      <button class="waves-effect waves-light btn-small " type="submit" name="action">Mark Completed</button>
+    </form>
+  </li>
+</ul>
+
+{% endfor %}
+
+</div>
+{% endblock content %}

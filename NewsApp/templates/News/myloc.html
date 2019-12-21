@@ -1,0 +1,74 @@
+{% extends 'home.html' %}
+{% load staticfiles %}
+{% load static %}
+{% block title %}
+  <title>My Location</title>
+{% endblock title %}
+
+{% block content %}
+<div class="parallax-container">
+  <div class="parallax"><img src="{% static 'images/mylocation.jpg' %}"></div>
+</div>
+<div class="container">
+<div class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s3"><a href="#tab1">News</a></li>
+      <li class="tab col s3"><a href="#tab2">Events</a></li>
+
+    </ul>
+  </div>
+</div>
+
+
+
+</div>
+<div id="tab1" class="container">
+{% for t,d in mylist %}
+
+<ul class="collection">
+  <li class="collection-item avatar">
+    <span class="title" style="font-size:20px">{{t}}</span>
+    <p><br>{{d}}</p>
+
+    <form class="secondary-content" action="{% url 'addtask' %}" method="post">
+      {%csrf_token%}
+      <input type = "hidden" name = "title" value = "{{t}}" />
+      <input type = "hidden" name = "desc" value = "{{d}}" />
+      <!--<input type="submit" value="Submit"><i class="material-icons">add_circle</i> -->
+      <button class="btn-floating btn-small waves-effect waves-light red" type="submit" name="action"><i class="material-icons">add</i></button>
+
+    </form>
+
+  </li>
+</ul>
+
+{% endfor %}
+
+</div>
+
+
+<div id="tab2" class="container">
+  {% for t,d,dt in mylist2 %}
+
+  <ul class="collection">
+    <li class="collection-item avatar">
+      <span class="title" style="font-size:20px">{{t}}</span>
+      <p><br>{{d}}</p><p>{{dt}}</p>
+
+      <form class="secondary-content" action="{% url 'addtask' %}" method="post">
+        {%csrf_token%}
+        <input type = "hidden" name = "title" value = "{{t}}" />
+        <input type = "hidden" name = "desc" value = "{{d}}" />
+        <!--<input type="submit" value="Submit"><i class="material-icons">add_circle</i> -->
+        <button class="btn-floating btn-small waves-effect waves-light red" type="submit" name="action"><i class="material-icons">add</i></button>
+
+      </form>
+
+    </li>
+  </ul>
+
+  {% endfor %}
+
+</div>
+{% endblock content %}

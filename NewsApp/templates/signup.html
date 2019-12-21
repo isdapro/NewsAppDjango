@@ -1,0 +1,133 @@
+{% load staticfiles %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="{% static 'js/source.js' %}"> </script>
+
+
+  </head>
+<body>
+
+
+
+
+
+
+<div class="container">
+<div class="valign-wrapper">
+  <br>
+
+  <div class="row center" style="width:100%">
+    <p>{{ form.non_field_errors }}</p>
+    <br>
+  <form class="col s12" action = "{% url 'signup' %}", method = "post">
+    {% csrf_token %}
+    <div class="row">
+      <div class="input-field offset-s3 col s6">
+        <input id="{{form.username.id_for_label}}" type="text" class="validate" name = {{form.username.html_name}}>
+        <label class="active" for="{{form.username.id_for_label}}">Username</label>
+      </div>
+      <br>
+      <p style="font-size:12px">
+        {% if form.username.errors %}
+        {% for error in form.username.errors %}
+        {{error|escape}}
+        {% endfor %}
+        {%endif%}
+      </p>
+    </div>
+    <div class="row">
+      <div class="input-field offset-s3 col s6">
+        <input id="{{form.email.id_for_label}}" type="text" class="validate" name = {{form.email.html_name}}>
+        <label class="active" for="{{form.email.id_for_label}}">Email Address</label>
+      </div>
+      <br>
+      <p style="font-size:12px">
+        {% if form.email.errors %}
+        {% for error in form.email.errors %}
+        {{error|escape}}
+        {% endfor %}
+        {%endif%}
+      </p>
+    </div>
+    <div class="row">
+      <div class="input-field offset-s3 col s6">
+        <input id="{{form.location.id_for_label}}" type="text" class="autocomplete" name = {{form.location.html_name}}>
+        <label class="active" for="{{form.location.id_for_label}}">Assigned Location</label>
+      </div>
+      <br>
+      <p style="font-size:12px">
+        {% if form.location.errors %}
+        {% for error in form.location.errors %}
+        {{error|escape}}
+        {% endfor %}
+        {%endif%}
+      </p>
+    </div>
+    <div class="row">
+      <div class="input-field offset-s3 col s6">
+        <input id="{{form.empid.id_for_label}}" type="text" class="validate" name = {{form.empid.html_name}}>
+        <label class="active" for="{{form.empid.id_for_label}}">Employee ID</label>
+      </div>
+      <br>
+      <p style="font-size:12px">
+        {% if form.empid.errors %}
+        {% for error in form.empid.errors %}
+        {{error|escape}}
+        {% endfor %}
+        {%endif%}
+      </p>
+    </div>
+    <div class="row">
+      <div class="input-field offset-s3 col s6">
+        <input id="{{form.password1.id_for_label}}" type="password" class="validate" name = {{form.password1.html_name}}>
+        <label class="active" for="{{form.password1.id_for_label}}">Password</label>
+      </div>
+      <br>
+      <p style="font-size:12px">
+        {% if form.password1.errors %}
+        {% for error in form.password1.errors %}
+        {{error|escape}}
+        {% endfor %}
+        {%endif%}
+      </p>
+    </div>
+    <div class="row">
+      <div class="input-field offset-s3 col s6">
+        <input id="{{form.password12.id_for_label}}" type="password" class="validate" name = {{form.password2.html_name}}>
+        <label class="active" for="{{form.password2.id_for_label}}">Password Confirmation</label>
+      </div>
+      <br>
+      <p style="font-size:12px">
+        {% if form.password2.errors %}
+        {% for error in form.password2.errors %}
+        {{error|escape}}
+        {% endfor %}
+        {%endif%}
+      </p>
+    </div>
+    <div class="center-align">
+    <button class="waves-effect waves-light btn-large" type="submit" name="action"><i class="material-icons left">verified_user</i> Sign Up
+
+    </button>
+    </div>
+    </form>
+    </div>
+
+</div>
+
+</div>
+
+
+
+</body>
+</html>
