@@ -1,5 +1,5 @@
 # NewsAppDjango
-This is a Django app that allows potential trip planners to respond to news and events. It uses NewsAPI and PredictHQ API to fetch data related to News and Events respectively. I have absolutely zero prior experience using Django and very minimal experience with HTML/CSS/JavaScript. Had to learn Django from scratch and then code it within 4 days. Hope you like my efforts.
+This is a Django app that allows potential trip planners to respond to news and events. It uses NewsAPI and PredictHQ API to fetch data related to News and Events respectively. I have absolutely zero prior experience using Django and minimal experience with HTML/CSS/JavaScript. Had to learn Django from scratch and then code it within 4 days. Hope you like my efforts.
 
 How it Works
 -----------
