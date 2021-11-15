@@ -4,7 +4,7 @@ eventregistry==8.7
 gunicorn==20.0.4
 newsapi-python==0.2.6
 nltk==3.4.5
-pip==19.3.1
+pip==21.1
 predicthq==1.0.5
 psycopg2==2.8.4
 pycountry==19.8.18
